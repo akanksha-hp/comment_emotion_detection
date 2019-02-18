@@ -1,0 +1,18 @@
+services:
+  plugin.manager.comment_emotion_detection.emotion_detection_api:
+    class: Drupal\comment_emotion_detection\EmotionDetectionApiPluginManager
+    parent: default_plugin_manager
+
+  comment_emotion_detection.subscriber:
+    class: Drupal\comment_emotion_detection\EventSubscriber\CommentEmotionDetectionSubscriber
+    arguments: ['@plugin.manager.comment_emotion_detection.emotion_detection_api', '@config.factory']
+    tags:
+    - {name: event_subscriber}
+
+  comment_emotion_detection.utility:
+    class: Drupal\comment_emotion_detection\CommentEmotionDetectionUtility
+    arguments: ['@config.factory', '@plugin.manager.comment_emotion_detection.emotion_detection_api']
+
+  comment_emotion_detection.api_helper:
+    class: Drupal\comment_emotion_detection\CommentEmotionDetectionApiHelper
+    arguments: ['@config.factory', '@plugin.manager.comment_emotion_detection.emotion_detection_api']

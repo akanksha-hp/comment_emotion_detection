@@ -1,0 +1,7 @@
+comment_emotion_detection.configuration.settings:
+  path: '/admin/config/performance/comment-emotion-detection/settings'
+  defaults:
+    _form: '\Drupal\comment_emotion_detection\Form\EmotionDetectionApiForm'
+    _title: 'Configuration'
+  requirements:
+    _permission: 'administer site configuration'

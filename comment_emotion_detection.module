@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Module file for the Memory Limit Policy module.
+ */
+
+/**
+ * Implements hook_comment_insert().
+ */
+function comment_emotion_detection_comment_insert($comment) {
+  \Drupal::service('comment_emotion_detection.utility')->processComment($comment);
+}

@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ *
+ * Defines the database tables used by this module.
+ *
+ * @see hook_schema()
+ */
+function comment_emotion_detection_schema() {
+  $schema['comment_emotion'] = [
+    'description' => 'Stores the emotions for each comment.',
+    'fields' => [
+      'cid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => "Comment ID",
+      ],
+      'emotion' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Emotions for the comment.',
+      ],
+    ],
+    'primary key' => ['cid'],
+    'indexes' => [
+      'emotion' => ['emotion'],
+    ],
+  ];
+
+  return $schema;
+}
